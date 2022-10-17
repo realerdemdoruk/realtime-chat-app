@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import styles from './styles.module.css';
 import { sendMessage } from '../socketApi';
 import { useChat } from '../context/ChatContext';
@@ -8,18 +9,18 @@ function ChatForm() {
 
   const { setMessages } = useChat();
 
-  const handeSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log(message);
 
-    setMessages((prevState) => [...prevState, { message }]);
+    setMessages((prevState) => [...prevState, { message, fromMe: true }]);
     sendMessage(message);
     setMessage('');
   };
 
   return (
     <div>
-      <form onSubmit={handeSubmit}>
+      <form onSubmit={handleSubmit}>
         <input
           className={styles.textInput}
           value={message}

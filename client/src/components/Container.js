@@ -13,7 +13,7 @@ function Container() {
     subscribeInitialMessages((messages) => setMessages(messages));
 
     subscribeChat((message) => {
-      setMessages((prevState) => [...prevState, { myessage }]);
+      setMessages((prevState) => [...prevState, { message }]);
     });
   }, []);
 
